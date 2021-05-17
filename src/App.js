@@ -1,5 +1,10 @@
+import Home from './pages/Home/Home';
 const App = () => {
-  return <div>hi from react app</div>;
+  return (
+    <div>
+      <Home />
+    </div>
+  );
 };
 
 export default App;
