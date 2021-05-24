@@ -27,6 +27,7 @@ for (const position in count) {
   ZonesList.push({
     lat: JSON.parse(position).latitude,
     lng: JSON.parse(position).longitude,
+    selected: JSON.parse(position).selected,
     count: count[position],
   });
 }

@@ -16,11 +16,22 @@ const Map = () => {
   });
 
   const [zone, setZone] = useState(null);
+  const [selectedZones, setSelectedZones] = useState(ZonesList);
+
   const selectMarker = (selectedZone) => {
     setZone(selectedZone);
   };
   const clearMarker = () => {
     setZone(null);
+  };
+
+  const handleDblClick = (zone) => {
+    const newList = selectedZones.map((oldZone) =>
+      oldZone.lat === zone.lat && oldZone.lng === zone.lng
+        ? { ...oldZone, selected: !oldZone.selected }
+        : { ...oldZone }
+    );
+    setSelectedZones(newList);
   };
 
   if (loadError) return 'Error loading maps';
@@ -37,7 +48,7 @@ const Map = () => {
         //   zoomControl: true,
         // }}
       >
-        {ZonesList.map((currentZone, index) => (
+        {selectedZones.map((currentZone, index) => (
           <Marker
             key={index}
             position={{ lat: currentZone.lat, lng: currentZone.lng }}
@@ -47,20 +58,32 @@ const Map = () => {
               fontSize: '1.5rem',
               text: `${currentZone.count}`,
             }}
+            icon={
+              currentZone.selected
+                ? {
+                    path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z',
+                    fillColor: 'yellow',
+                    fillOpacity: 0.9,
+                    scale: 2,
+                    strokeColor: 'gold',
+                    strokeWeight: 2,
+                  }
+                : {
+                    path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z',
+                    fillColor: 'blue',
+                    fillOpacity: 0.9,
+                    scale: 2,
+                    strokeColor: 'purple',
+                    strokeWeight: 2,
+                  }
+            }
             // icon={{
-            //   path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z',
-            //   fillColor: 'yellow',
-            //   fillOpacity: 0.9,
-            //   scale: 2,
-            //   strokeColor: 'gold',
-            //   strokeWeight: 2,
-            // }}
             onClick={selectMarker.bind(this, currentZone)}
             // icon={{
             //   url: GreenMarker,
             //   scaledSize: new window.google.maps.Size(25, 25),
             // }}
-            // onDblClick={() => console.log('double click !')}
+            onDblClick={handleDblClick.bind(this, currentZone)}
           >
             {zone &&
               zone.lat === currentZone.lat &&
