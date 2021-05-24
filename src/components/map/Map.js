@@ -1,145 +1,79 @@
 import { useState } from 'react';
-import { GoogleMap, withGoogleMap, Marker } from 'react-google-maps';
-import LocationsList from './LocationsList';
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from '@react-google-maps/api';
+import ZonesList from './ZonesList';
 
-const coordinates = {
-  lat: 32.88,
-  lng: 13.18,
-};
+// import GreenMarker from '../../assets/images/green-marker2.png';
+// import mapStyle from './mapStyle';
 
 const Map = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const onValueChange = (e) => {
-    setSelectedOption(e.target.value);
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyCSLXG5j-CqSB0zR476bJFXOSQ9sWuXqH0',
+  });
+
+  const [zone, setZone] = useState(null);
+  const selectMarker = (selectedZone) => {
+    setZone(selectedZone);
   };
+  const clearMarker = () => {
+    setZone(null);
+  };
+
+  if (loadError) return 'Error loading maps';
+  if (!isLoaded) return 'Loading Maps';
   return (
     <div>
-      <p style={{ textAlign: 'center' }}>Please select your Scale:</p>
-      <div className="d-flex" style={{ justifyContent: 'center' }}>
-        <div>
-          <input
-            type="radio"
-            name="scale"
-            value="0.001"
-            checked={selectedOption === '0.001'}
-            onChange={onValueChange}
-          />
-          <br />
-          <label htmlFor="0.001">0.001</label>
-        </div>
-        <div style={{ marginLeft: '1rem' }}>
-          <input
-            type="radio"
-            name="scale"
-            value="0.0025"
-            checked={selectedOption === '0.0025'}
-            onChange={onValueChange}
-          />
-          <br />
-          <label htmlFor="0.0025">0.0025</label>
-        </div>
-        <div style={{ marginLeft: '1rem' }}>
-          <input
-            type="radio"
-            name="scale"
-            value="0.005"
-            checked={selectedOption === '0.005'}
-            onChange={onValueChange}
-          />
-          <br />
-          <label htmlFor="0.005">0.005</label>
-        </div>
-        <div style={{ marginLeft: '1rem' }}>
-          <input
-            type="radio"
-            name="scale"
-            value="0.0075"
-            checked={selectedOption === '0.0075'}
-            onChange={onValueChange}
-          />
-          <br />
-          <label htmlFor="0.0075">0.0075</label>
-        </div>
-        <div style={{ marginLeft: '1rem' }}>
-          <input
-            type="radio"
-            name="scale"
-            value="0.01"
-            checked={selectedOption === '0.01'}
-            onChange={onValueChange}
-          />
-          <br />
-          <label htmlFor="0.01">0.01</label>
-        </div>
-      </div>
-
       <GoogleMap
-        defaultZoom={15}
-        defaultCenter={{ lat: LocationsList[0].lat, lng: LocationsList[0].lng }}
+        mapContainerStyle={{ width: '100vw', height: '70vh' }}
+        zoom={15}
+        center={{ lat: 32.8667339, lng: 13.2017534 }}
+        // options={{
+        //   styles: mapStyle,
+        //   disableDefaultUI: true,
+        //   zoomControl: true,
+        // }}
       >
-        <Marker
-          position={{ lat: coordinates.lat, lng: coordinates.lng }}
-          label="1"
-        />
-        <Marker
-          position={{
-            lat: coordinates.lat,
-            lng: coordinates.lng + parseFloat(selectedOption),
-          }}
-          label="2"
-        />
-        <Marker
-          position={{
-            lat: coordinates.lat,
-            lng: coordinates.lng + parseFloat(selectedOption) * 2,
-          }}
-          label="3"
-        />
-        <Marker
-          position={{
-            lat: coordinates.lat - parseFloat(selectedOption),
-            lng: coordinates.lng,
-          }}
-          label="4"
-        />
-        <Marker
-          position={{
-            lat: coordinates.lat - parseFloat(selectedOption),
-            lng: coordinates.lng + parseFloat(selectedOption),
-          }}
-          label="5"
-        />
-        <Marker
-          position={{
-            lat: coordinates.lat - parseFloat(selectedOption),
-            lng: coordinates.lng + parseFloat(selectedOption) * 2,
-          }}
-          label="6"
-        />
-        <Marker
-          position={{
-            lat: coordinates.lat - parseFloat(selectedOption) * 2,
-            lng: coordinates.lng,
-          }}
-          label="7"
-        />
-        <Marker
-          position={{
-            lat: coordinates.lat - parseFloat(selectedOption) * 2,
-            lng: coordinates.lng + parseFloat(selectedOption),
-          }}
-          label="8"
-        />
-        <Marker
-          position={{
-            lat: coordinates.lat - parseFloat(selectedOption) * 2,
-            lng: coordinates.lng + parseFloat(selectedOption) * 2,
-          }}
-          label="9"
-        />
+        {ZonesList.map((currentZone, index) => (
+          <Marker
+            key={index}
+            position={{ lat: currentZone.lat, lng: currentZone.lng }}
+            label={{
+              color: '#faa',
+              fontWeight: 'bold',
+              fontSize: '1.5rem',
+              text: `${currentZone.count}`,
+            }}
+            // icon={{
+            //   path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z',
+            //   fillColor: 'yellow',
+            //   fillOpacity: 0.9,
+            //   scale: 2,
+            //   strokeColor: 'gold',
+            //   strokeWeight: 2,
+            // }}
+            onClick={selectMarker.bind(this, currentZone)}
+            // icon={{
+            //   url: GreenMarker,
+            //   scaledSize: new window.google.maps.Size(25, 25),
+            // }}
+            // onDblClick={() => console.log('double click !')}
+          >
+            {zone &&
+              zone.lat === currentZone.lat &&
+              zone.lng === currentZone.lng && (
+                <InfoWindow onCloseClick={clearMarker}>
+                  <div style={{ fontSize: '2rem' }}>{zone.count}</div>
+                </InfoWindow>
+              )}
+          </Marker>
+        ))}
       </GoogleMap>
     </div>
   );
 };
 
-export default withGoogleMap(Map);
+export default Map;
