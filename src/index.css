@@ -19,3 +19,6 @@ code {
 .d-flex {
   display: flex;
 }
+.justify-space-evenly {
+  justify-content: space-evenly;
+}

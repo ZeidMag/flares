@@ -5,8 +5,10 @@ import { Provider } from 'react-redux';
 // import newsReducer from './reducers/news';
 // import projectsReducer from './reducers/projects';
 // import mainReducer from './reducers/main';
+import tempReducer from './reducers/temp';
 
 const rootReducer = combineReducers({
+  temp: tempReducer,
   //   news: newsReducer,
   //   projects: projectsReducer,
   //   main: mainReducer,
