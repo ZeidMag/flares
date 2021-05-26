@@ -69,18 +69,47 @@ const Map = () => {
       >
         <MarkerClusterer>
           {(clusterer) =>
-            selectedZones.map((location, index) => (
+            selectedZones.map((currentZone, index) => (
               <Marker
                 key={index}
-                position={location}
+                position={currentZone}
                 clusterer={clusterer}
                 label={{
                   color: '#faa',
                   fontWeight: 'bold',
                   fontSize: '1.5rem',
-                  text: `${location.count}`,
+                  text: `${currentZone.count}`,
                 }}
-              />
+                icon={
+                  currentZone.selected
+                    ? {
+                        path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z',
+                        fillColor: 'yellow',
+                        fillOpacity: 0.9,
+                        scale: 2,
+                        strokeColor: 'gold',
+                        strokeWeight: 2,
+                      }
+                    : {
+                        path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z',
+                        fillColor: 'green',
+                        fillOpacity: 0.9,
+                        scale: 2,
+                        strokeColor: 'limegreen',
+                        strokeWeight: 2,
+                      }
+                }
+                onClick={selectMarker.bind(this, currentZone)}
+                onDblClick={handleDblClick.bind(this, currentZone)}
+              >
+                {zone &&
+                  zone.lat === currentZone.lat &&
+                  zone.lng === currentZone.lng && (
+                    <InfoWindow onCloseClick={clearMarker}>
+                      <div style={{ fontSize: '2rem' }}>{zone.count}</div>
+                    </InfoWindow>
+                  )}
+              </Marker>
             ))
           }
         </MarkerClusterer>
