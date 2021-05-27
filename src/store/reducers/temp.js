@@ -2,8 +2,8 @@
 import { SET_ROUND_FACTOR, SET_FLARE_COUNT } from '../actions/temp';
 
 const initialState = {
-  roundFactor: 10000,
-  flareCount: 10000,
+  roundFactor: 1000,
+  flareCount: 1000,
 };
 
 export default (state = initialState, action) => {
