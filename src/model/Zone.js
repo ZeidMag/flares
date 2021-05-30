@@ -1,5 +1,3 @@
-// const roundFactor = 100;
-
 class Zone {
   constructor(latitude, longitude, roundFactor) {
     this.latitude = Math.round(latitude * roundFactor) / roundFactor;

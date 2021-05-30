@@ -3,7 +3,7 @@ import { SET_ROUND_FACTOR, SET_FLARE_COUNT } from '../actions/temp';
 
 const initialState = {
   roundFactor: 1000,
-  flareCount: 1000,
+  flareCount: 50,
 };
 
 export default (state = initialState, action) => {

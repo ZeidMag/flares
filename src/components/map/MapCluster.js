@@ -1,37 +1,40 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   GoogleMap,
   useLoadScript,
   Marker,
   InfoWindow,
   MarkerClusterer,
-} from "@react-google-maps/api";
-import ZonesList from "./ZonesList";
-import { useSelector } from "react-redux";
+} from '@react-google-maps/api';
+import ZonesList from './ZonesList';
+import { useSelector, useDispatch } from 'react-redux';
+import { createTicket } from '../../store/actions/tickets';
 
-import "./Map.css";
-import "./Sidebar.css";
+import './Map.css';
+import './Sidebar.css';
 // import GreenMarker from '../../assets/images/green-marker2.png';
 // import mapStyle from './mapStyle';
 
 const Map = () => {
   const { flareCount, roundFactor } = useSelector((state) => state.temp);
+  const { tickets } = useSelector((state) => state.tickets);
   const [maxMarker, setMaxMarker] = useState(0);
+
+  const dispatch = useDispatch();
+
   const resetMaxMarker = (x) => {
-    var lengths = x.clusters.map(function (cluster) {
-      return cluster.markers.length;
-    });
+    const lengths = x.clusters.map((cluster) => cluster.markers.length);
     let maxlengthMath = Math.max(...lengths);
 
     setMaxMarker(maxlengthMath);
-    console.log("resetted");
+    // console.log("resetted");
   };
-  const setMaxMarkerOnEnd = (x) => {
-    console.log("resetted on end");
-  };
+  // const setMaxMarkerOnEnd = (x) => {
+  //   console.log("resetted on end");
+  // };
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCSLXG5j-CqSB0zR476bJFXOSQ9sWuXqH0",
+    googleMapsApiKey: 'AIzaSyCSLXG5j-CqSB0zR476bJFXOSQ9sWuXqH0',
   });
 
   const [zone, setZone] = useState(null);
@@ -46,6 +49,16 @@ const Map = () => {
     setZone(null);
   };
 
+  const submitTicket = () => {
+    const selectedZonesList = selectedZones.filter((zone) => zone.selected);
+    dispatch(
+      createTicket([selectedZonesList, 'some subject', 'some descrpition'])
+    );
+    setSelectedZones(
+      selectedZones.map((zone) => ({ ...zone, selected: false }))
+    );
+  };
+
   const handleDblClick = (zone) => {
     const newList = selectedZones.map((oldZone) =>
       oldZone.lat === zone.lat && oldZone.lng === zone.lng
@@ -55,27 +68,41 @@ const Map = () => {
     setSelectedZones(newList);
   };
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading Maps";
+  const removeZoneSelection = (zone) => {
+    const newList = selectedZones.filter(
+      (oldZone) => oldZone.lat !== zone.lat && oldZone.lng !== zone.lng
+    );
+    setSelectedZones(newList);
+  };
+
+  if (loadError) return 'Error loading maps';
+  if (!isLoaded) return 'Loading Maps';
   return (
     <>
       {/* <div className="sidebar">hi</div> */}
       <h1>Google Map</h1>
       <div>
         {selectedZones.filter((zone) => zone.selected === true).length ? (
-          <ol>
-            {selectedZones
-              .filter((zone) => zone.selected === true)
-              .map((item, i) => (
-                <li key={i}>
-                  Zone Coordinates: ({item.lat}, {item.lng}). it has{" "}
-                  {item.count} flare{item.count > 1 && "s"}
-                </li>
-              ))}
-          </ol>
+          <>
+            <ol>
+              {selectedZones
+                .filter((zone) => zone.selected === true)
+                .map((item, i) => (
+                  <li key={i}>
+                    Zone Coordinates: ({item.lat}, {item.lng}). it has{' '}
+                    {item.count} flare{item.count > 1 && 's'}
+                    <span onClick={removeZoneSelection.bind(this, item)}>
+                      {' '}
+                      X
+                    </span>
+                  </li>
+                ))}
+            </ol>
+            <button onClick={submitTicket}>Create new Ticket</button>
+          </>
         ) : null}
         <GoogleMap
-          mapContainerStyle={{ width: "100vw", height: "70vh" }}
+          mapContainerStyle={{ width: '100vw', height: '70vh' }}
           zoom={14}
           center={{ lat: 32.8667339, lng: 13.2017534 }}
           // options={{
@@ -87,7 +114,7 @@ const Map = () => {
           <MarkerClusterer
             zoomOnClick={false}
             onClusteringBegin={resetMaxMarker}
-            onClusteringEnd={setMaxMarkerOnEnd}
+            // onClusteringEnd={setMaxMarkerOnEnd}
             calculator={(markers, numstyle) => {
               // if (markers.length > maxMarker) {
               //   setMaxMarker(markers.length);
@@ -123,29 +150,27 @@ const Map = () => {
                   position={currentZone}
                   clusterer={clusterer}
                   label={{
-                    color: "#faa",
-                    fontWeight: "bold",
-                    fontSize: "1.5rem",
+                    color: '#faa',
+                    fontWeight: 'bold',
+                    fontSize: '1.5rem',
                     text: `${currentZone.count}`,
                   }}
                   icon={
                     currentZone.selected
                       ? {
-                          path:
-                            "M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z",
-                          fillColor: "yellow",
+                          path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z',
+                          fillColor: 'yellow',
                           fillOpacity: 0.9,
                           scale: 2,
-                          strokeColor: "gold",
+                          strokeColor: 'gold',
                           strokeWeight: 2,
                         }
                       : {
-                          path:
-                            "M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z",
-                          fillColor: "green",
+                          path: 'M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z',
+                          fillColor: 'green',
                           fillOpacity: 0.9,
                           scale: 2,
-                          strokeColor: "limegreen",
+                          strokeColor: 'limegreen',
                           strokeWeight: 2,
                         }
                   }
@@ -156,7 +181,7 @@ const Map = () => {
                     zone.lat === currentZone.lat &&
                     zone.lng === currentZone.lng && (
                       <InfoWindow onCloseClick={clearMarker}>
-                        <div style={{ fontSize: "2rem" }}>{zone.count}</div>
+                        <div style={{ fontSize: '2rem' }}>{zone.count}</div>
                       </InfoWindow>
                     )}
                 </Marker>
@@ -164,7 +189,7 @@ const Map = () => {
             }
           </MarkerClusterer>
         </GoogleMap>
-        <button onClick={() => console.log(maxMarker)}>show marker list</button>
+        <button onClick={() => console.log(tickets)}>show ticket list</button>
       </div>
     </>
   );

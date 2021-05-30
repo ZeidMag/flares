@@ -6,9 +6,11 @@ import { Provider } from 'react-redux';
 // import projectsReducer from './reducers/projects';
 // import mainReducer from './reducers/main';
 import tempReducer from './reducers/temp';
+import ticketsReducer from './reducers/tickets';
 
 const rootReducer = combineReducers({
   temp: tempReducer,
+  tickets: ticketsReducer,
   //   news: newsReducer,
   //   projects: projectsReducer,
   //   main: mainReducer,
