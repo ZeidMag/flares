@@ -8,7 +8,6 @@ const Tickets = () => {
   if (!tickets.length) {
     return <p>no tickets available</p>;
   }
-  console.log(tickets[0]);
   return (
     <>
       <h1>All Tickets</h1>

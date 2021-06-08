@@ -26,6 +26,7 @@ h6 {
   padding: 0.5em 0.75em;
   text-transform: uppercase;
   border-radius: 9px;
+  cursor: pointer;
 }
 
 .ticket-new {

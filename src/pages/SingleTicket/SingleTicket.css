@@ -1,0 +1,45 @@
+.status-modal-container {
+  position: fixed;
+  inset: 0; /* not supported in edge, change for top/buttom/left/right */
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.status-modal {
+  width: min(40%, 500px);
+  height: 10rem;
+  background-color: white;
+  margin: 5rem auto;
+}
+.status-modal > h2 {
+  text-align: center;
+}
+
+.status-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.status-list > li {
+  color: #fff;
+  width: 3.5rem;
+  text-align: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: large;
+  border-radius: 10%;
+}
+
+.status-list > li:nth-child(1) {
+  background-color: orange;
+  border: 0.2rem solid rgba(168, 112, 9, 0.397);
+}
+.status-list > li:nth-child(2) {
+  background-color: rgba(0, 0, 255, 0.644);
+  border: 0.2rem solid blue;
+}
+.status-list > li:nth-child(3) {
+  background-color: rgba(128, 127, 127, 0.671);
+  border: 0.2rem solid rgba(95, 94, 94, 0.671);
+}

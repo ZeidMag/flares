@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
   CREATE_TICKET,
+  ADD_COMMENT,
   //   UPDATE_TICKET,
   //   DELETE_TICKET,
 } from '../actions/tickets';
@@ -17,6 +18,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         tickets: [...state.tickets, ticket],
+      };
+    case ADD_COMMENT:
+      const updateTickets = state.tickets.map((ticket) => {
+        if (ticket.id === action.ticketId) {
+          ticket.commentsList.push(action.payload);
+        }
+        return ticket;
+      });
+      return {
+        ...state,
+        tickets: [...updateTickets],
       };
 
     default:

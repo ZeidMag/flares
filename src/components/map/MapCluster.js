@@ -1,24 +1,20 @@
 import { useState } from 'react';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-  MarkerClusterer,
-} from '@react-google-maps/api';
+import { Marker, InfoWindow, MarkerClusterer } from '@react-google-maps/api';
 import ZonesList from './ZonesList';
 import { useSelector, useDispatch } from 'react-redux';
 import { createTicket } from '../../store/actions/tickets';
 
+import MapContainer from './Map';
+
 import './Map.css';
-import './Sidebar.css';
 // import GreenMarker from '../../assets/images/green-marker2.png';
 // import mapStyle from './mapStyle';
 
 const Map = () => {
   const { flareCount, roundFactor } = useSelector((state) => state.temp);
-  const { tickets } = useSelector((state) => state.tickets);
   const [maxMarker, setMaxMarker] = useState(0);
+  const [subject, setSubject] = useState('');
+  const [description, setDescription] = useState('');
 
   const dispatch = useDispatch();
 
@@ -27,15 +23,7 @@ const Map = () => {
     let maxlengthMath = Math.max(...lengths);
 
     setMaxMarker(maxlengthMath);
-    // console.log("resetted");
   };
-  // const setMaxMarkerOnEnd = (x) => {
-  //   console.log("resetted on end");
-  // };
-
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyCSLXG5j-CqSB0zR476bJFXOSQ9sWuXqH0',
-  });
 
   const [zone, setZone] = useState(null);
   const [selectedZones, setSelectedZones] = useState(
@@ -51,12 +39,12 @@ const Map = () => {
 
   const submitTicket = () => {
     const selectedZonesList = selectedZones.filter((zone) => zone.selected);
-    dispatch(
-      createTicket([selectedZonesList, 'some subject', 'some descrpition'])
-    );
+    dispatch(createTicket([selectedZonesList, subject, description]));
     setSelectedZones(
       selectedZones.map((zone) => ({ ...zone, selected: false }))
     );
+    setSubject('');
+    setDescription('');
   };
 
   const handleDblClick = (zone) => {
@@ -75,11 +63,8 @@ const Map = () => {
     setSelectedZones(newList);
   };
 
-  if (loadError) return 'Error loading maps';
-  if (!isLoaded) return 'Loading Maps';
   return (
     <>
-      {/* <div className="sidebar">hi</div> */}
       <h1>Google Map</h1>
       <div>
         {selectedZones.filter((zone) => zone.selected === true).length ? (
@@ -98,19 +83,23 @@ const Map = () => {
                   </li>
                 ))}
             </ol>
+            <label>Subject</label>
+            <input
+              type="text"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+            <label>Description</label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <br />
             <button onClick={submitTicket}>Create new Ticket</button>
           </>
         ) : null}
-        <GoogleMap
-          mapContainerStyle={{ width: '100vw', height: '70vh' }}
-          zoom={14}
-          center={{ lat: 32.8667339, lng: 13.2017534 }}
-          // options={{
-          //   styles: mapStyle,
-          //   disableDefaultUI: true,
-          //   zoomControl: true,
-          // }}
-        >
+        <MapContainer>
           <MarkerClusterer
             zoomOnClick={false}
             onClusteringBegin={resetMaxMarker}
@@ -188,8 +177,7 @@ const Map = () => {
               ))
             }
           </MarkerClusterer>
-        </GoogleMap>
-        <button onClick={() => console.log(tickets)}>show ticket list</button>
+        </MapContainer>
       </div>
     </>
   );

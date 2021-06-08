@@ -22,3 +22,7 @@ code {
 .justify-space-evenly {
   justify-content: space-evenly;
 }
+
+.remove-element {
+  display: none;
+}

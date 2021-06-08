@@ -9,6 +9,7 @@ class Ticket {
     this.description = description;
     this.status = 'new';
     this.createdAt = new Date();
+    this.commentsList = [];
   }
 }
 
