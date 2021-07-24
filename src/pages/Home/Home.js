@@ -1,6 +1,5 @@
 import './Home.css';
-// import Map from '../../components/map/Map';
-import Map from '../../components/map/MapCluster';
+import Map from '../../components/map/MapMarkers';
 
 const Home = () => {
   return (

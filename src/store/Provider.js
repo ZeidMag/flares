@@ -2,18 +2,14 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
-// import newsReducer from './reducers/news';
-// import projectsReducer from './reducers/projects';
-// import mainReducer from './reducers/main';
-import tempReducer from './reducers/temp';
+// import tempReducer from './reducers/temp';
 import ticketsReducer from './reducers/tickets';
+import flareReducer from './reducers/flare';
 
 const rootReducer = combineReducers({
-  temp: tempReducer,
+  flare: flareReducer,
   tickets: ticketsReducer,
-  //   news: newsReducer,
-  //   projects: projectsReducer,
-  //   main: mainReducer,
+  // temp: tempReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

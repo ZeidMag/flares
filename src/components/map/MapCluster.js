@@ -4,6 +4,8 @@ import ZonesList from './ZonesList';
 import { useSelector, useDispatch } from 'react-redux';
 import { createTicket } from '../../store/actions/tickets';
 
+// import { getZones } from '../../store/actions/zone';
+
 import MapContainer from './Map';
 
 import './Map.css';

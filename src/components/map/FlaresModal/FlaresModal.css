@@ -1,0 +1,39 @@
+.flares-modal-container {
+  position: fixed;
+  inset: 0; /* not supported in edge, change for top/buttom/left/right */
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.flares-modal {
+  width: min(70%, 1000px);
+  /* height: 10rem; */
+  background-color: white;
+  margin: 5rem auto;
+  padding: 0.5rem;
+}
+
+.flare-item {
+  line-height: 1rem;
+  margin: 1rem;
+}
+
+.flare-item-pill {
+  border-radius: 9999px;
+  padding: 0.2em 0.5em;
+  color: white;
+  margin: 0 0.25em;
+}
+.customer-unverified {
+  background-color: red;
+}
+.customer-verified,
+.flares-status-resolved {
+  background-color: green;
+}
+
+.flares-status-pending {
+  background-color: blue;
+}
+.flare-type {
+  background-color: pink;
+}

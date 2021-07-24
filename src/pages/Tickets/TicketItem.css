@@ -20,6 +20,9 @@ h6 {
   margin: 0.5em 0;
 }
 
+.ticket-status {
+  display: flex;
+}
 .ticket-status > h5 {
   margin: 0.25em 0.35em;
   color: white;
@@ -29,13 +32,13 @@ h6 {
   cursor: pointer;
 }
 
-.ticket-new {
+.ticket-status-1 {
   background-color: orange;
 }
-.ticket-open {
+.ticket-status-2 {
   background-color: rgb(89, 89, 211);
 }
-.ticket-closed {
+.ticket-status-3 {
   background-color: rgb(129, 194, 31);
 }
 
@@ -69,4 +72,27 @@ h6 {
   text-align: end;
   margin: 1em;
   width: 15ch;
+}
+
+.ticket-priority-1 {
+  background-color: green;
+}
+.ticket-priority-2 {
+  background-color: yellow;
+}
+.ticket-priority-3 {
+  background-color: orange;
+}
+.ticket-priority-4 {
+  background-color: red;
+}
+
+.ticket-type-1 {
+  background-color: tomato;
+}
+.ticket-type-2 {
+  background-color: slateblue;
+}
+.ticket-type-3 {
+  background-color: palevioletred;
 }
