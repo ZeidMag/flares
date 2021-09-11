@@ -5,7 +5,7 @@ import MapContainer from '../../components/map/Map';
 import { Marker } from '@react-google-maps/api';
 import { getTickets, getStatusPriorityType } from '../../store/actions/tickets';
 import { countBy } from 'lodash';
-import Comment from '../../components/tickets/Comments/SingleComment';
+import Comments from '../../components/tickets/Comments/Comments';
 
 import './SingleTicket.css';
 import '../Tickets/TicketItem.css';
@@ -28,7 +28,8 @@ const SingleTicket = () => {
     if (!ticketStatus.length || !ticketPriority.length || !ticketType.length) {
       dispatch(getStatusPriorityType());
     }
-  }, [ticketStatus, ticketPriority, ticketType, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   if (!ticket) return <p>no ticket, maybe incorrect id?</p>;
 
@@ -113,7 +114,7 @@ const SingleTicket = () => {
           </div>
         </div>
       </div>
-      <Comment />
+      <Comments />
       <h3>
         <Link to="/tickets">Go back to All Tickets</Link>
       </h3>

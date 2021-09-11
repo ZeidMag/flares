@@ -27,22 +27,22 @@ export const createTicket = (ticket) => {
     const tempOwnerId = 2;
     const response = await axios.post('http://localhost:5000/api/v1/ticket/', {
       ticket: {
-        ownerId: tempOwnerId,
-        resolverId: null,
         subject: ticket.subject,
         description: ticket.description,
+        priorityId: ticket.priorityId,
+        typeId: ticket.typeId,
+        ownerId: tempOwnerId,
         createdAt: new Date(),
-        closedAt: null,
         statusId: tempStatus,
+        closedAt: null,
+        resolverId: null,
       },
       flareList: ticket.flareIdsList,
       zoneList: ticket.zoneIdsList,
     });
     if (response && response.data.success) {
-      console.log('create ticket succeeded');
       return dispatch(updateFlares(response.data.data));
     }
-    console.log(response);
   };
 };
 

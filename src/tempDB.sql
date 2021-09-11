@@ -19,6 +19,8 @@ select *
 From "FlareStatus"
 select *
 from "Comment"
+select *
+from "CommentType"
 insert into "Flare"
 
 insert into "TicketZone"
