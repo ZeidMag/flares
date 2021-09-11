@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/flares/static/css/main.f751ce62.chunk.css",
-    "main.js": "/flares/static/js/main.ea93bef5.chunk.js",
-    "main.js.map": "/flares/static/js/main.ea93bef5.chunk.js.map",
+    "main.css": "/flares/static/css/main.46c4d121.chunk.css",
+    "main.js": "/flares/static/js/main.d7619922.chunk.js",
+    "main.js.map": "/flares/static/js/main.d7619922.chunk.js.map",
     "runtime-main.js": "/flares/static/js/runtime-main.6846e411.js",
     "runtime-main.js.map": "/flares/static/js/runtime-main.6846e411.js.map",
     "static/js/2.a359e870.chunk.js": "/flares/static/js/2.a359e870.chunk.js",
     "static/js/2.a359e870.chunk.js.map": "/flares/static/js/2.a359e870.chunk.js.map",
     "index.html": "/flares/index.html",
-    "static/css/main.f751ce62.chunk.css.map": "/flares/static/css/main.f751ce62.chunk.css.map",
+    "static/css/main.46c4d121.chunk.css.map": "/flares/static/css/main.46c4d121.chunk.css.map",
     "static/js/2.a359e870.chunk.js.LICENSE.txt": "/flares/static/js/2.a359e870.chunk.js.LICENSE.txt",
     "static/media/App.css": "/flares/static/media/Careem-Regular.28b9403a.ttf",
+    "static/media/corner-logo.7f9623fb.svg": "/flares/static/media/corner-logo.7f9623fb.svg",
     "static/media/login-image.528cdeeb.png": "/flares/static/media/login-image.528cdeeb.png"
   },
   "entrypoints": [
     "static/js/runtime-main.6846e411.js",
     "static/js/2.a359e870.chunk.js",
-    "static/css/main.f751ce62.chunk.css",
-    "static/js/main.ea93bef5.chunk.js"
+    "static/css/main.46c4d121.chunk.css",
+    "static/js/main.d7619922.chunk.js"
   ]
 }
