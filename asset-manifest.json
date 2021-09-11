@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/flares/static/css/main.aec7ce33.chunk.css",
+    "main.css": "/flares/static/css/main.35529d12.chunk.css",
     "main.js": "/flares/static/js/main.d7619922.chunk.js",
     "main.js.map": "/flares/static/js/main.d7619922.chunk.js.map",
     "runtime-main.js": "/flares/static/js/runtime-main.6846e411.js",
@@ -8,7 +8,7 @@
     "static/js/2.a359e870.chunk.js": "/flares/static/js/2.a359e870.chunk.js",
     "static/js/2.a359e870.chunk.js.map": "/flares/static/js/2.a359e870.chunk.js.map",
     "index.html": "/flares/index.html",
-    "static/css/main.aec7ce33.chunk.css.map": "/flares/static/css/main.aec7ce33.chunk.css.map",
+    "static/css/main.35529d12.chunk.css.map": "/flares/static/css/main.35529d12.chunk.css.map",
     "static/js/2.a359e870.chunk.js.LICENSE.txt": "/flares/static/js/2.a359e870.chunk.js.LICENSE.txt",
     "static/media/App.css": "/flares/static/media/Careem-Regular.28b9403a.ttf",
     "static/media/corner-logo.7f9623fb.svg": "/flares/static/media/corner-logo.7f9623fb.svg",
@@ -17,7 +17,7 @@
   "entrypoints": [
     "static/js/runtime-main.6846e411.js",
     "static/js/2.a359e870.chunk.js",
-    "static/css/main.aec7ce33.chunk.css",
+    "static/css/main.35529d12.chunk.css",
     "static/js/main.d7619922.chunk.js"
   ]
 }
