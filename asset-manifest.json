@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/flares/static/css/main.0fdef283.chunk.css",
-    "main.js": "/flares/static/js/main.d7619922.chunk.js",
-    "main.js.map": "/flares/static/js/main.d7619922.chunk.js.map",
+    "main.css": "/flares/static/css/main.3a26757e.chunk.css",
+    "main.js": "/flares/static/js/main.954fde1f.chunk.js",
+    "main.js.map": "/flares/static/js/main.954fde1f.chunk.js.map",
     "runtime-main.js": "/flares/static/js/runtime-main.6846e411.js",
     "runtime-main.js.map": "/flares/static/js/runtime-main.6846e411.js.map",
-    "static/js/2.a359e870.chunk.js": "/flares/static/js/2.a359e870.chunk.js",
-    "static/js/2.a359e870.chunk.js.map": "/flares/static/js/2.a359e870.chunk.js.map",
+    "static/js/2.32783361.chunk.js": "/flares/static/js/2.32783361.chunk.js",
+    "static/js/2.32783361.chunk.js.map": "/flares/static/js/2.32783361.chunk.js.map",
     "index.html": "/flares/index.html",
-    "static/css/main.0fdef283.chunk.css.map": "/flares/static/css/main.0fdef283.chunk.css.map",
-    "static/js/2.a359e870.chunk.js.LICENSE.txt": "/flares/static/js/2.a359e870.chunk.js.LICENSE.txt",
+    "static/css/main.3a26757e.chunk.css.map": "/flares/static/css/main.3a26757e.chunk.css.map",
+    "static/js/2.32783361.chunk.js.LICENSE.txt": "/flares/static/js/2.32783361.chunk.js.LICENSE.txt",
     "static/media/App.css": "/flares/static/media/Careem-Regular.28b9403a.ttf",
+    "static/media/add-circle.b7716654.svg": "/flares/static/media/add-circle.b7716654.svg",
     "static/media/corner-logo.7f9623fb.svg": "/flares/static/media/corner-logo.7f9623fb.svg",
     "static/media/login-image.528cdeeb.png": "/flares/static/media/login-image.528cdeeb.png"
   },
   "entrypoints": [
     "static/js/runtime-main.6846e411.js",
-    "static/js/2.a359e870.chunk.js",
-    "static/css/main.0fdef283.chunk.css",
-    "static/js/main.d7619922.chunk.js"
+    "static/js/2.32783361.chunk.js",
+    "static/css/main.3a26757e.chunk.css",
+    "static/js/main.954fde1f.chunk.js"
   ]
 }
