@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="101.599" height="101.599" viewBox="0 0 101.599 101.599">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f85959;
+      }
+    </style>
+  </defs>
+  <path id="Icon_ionic-md-add-circle" data-name="Icon ionic-md-add-circle" class="cls-1" d="M39.3,3.375A35.921,35.921,0,1,0,75.216,39.3,35.921,35.921,0,0,0,39.3,3.375ZM57.774,42.922H42.922V57.774H35.669V42.922H20.817V35.669H35.669V20.817h7.253V35.669H57.774Z" transform="translate(-4.773 50.799) rotate(-45)"/>
+</svg>

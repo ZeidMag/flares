@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24.851" height="29.78" viewBox="0 0 24.851 29.78">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #605d5d;
+      }
+    </style>
+  </defs>
+  <path id="notifications-dashboard_" data-name="notifications-dashboard " class="cls-1" d="M18.05,33.155a2.96,2.96,0,0,0,2.924-2.978H15.127A2.96,2.96,0,0,0,18.05,33.155Zm9.5-8.934V16.031a9.624,9.624,0,0,0-7.309-9.381V5.608a2.193,2.193,0,1,0-4.385,0V6.651a9.624,9.624,0,0,0-7.309,9.381v8.189L5.625,27.2v1.489H30.476V27.2Z" transform="translate(-5.625 -3.375)"/>
+</svg>

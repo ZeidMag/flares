@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="199" height="199" viewBox="0 0 199 199">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #d24a4a;
+      }
+
+      .cls-3 {
+        filter: url(#Ellipse_14);
+      }
+    </style>
+    <filter id="Ellipse_14" x="0" y="0" width="199" height="199" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feFlood flood-color="#e61919" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="red-tower" transform="translate(45 35)">
+    <g class="cls-3" transform="matrix(1, 0, 0, 1, -45, -35)">
+      <circle id="Ellipse_14-2" data-name="Ellipse 14" class="cls-1" cx="54.5" cy="54.5" r="54.5" transform="translate(45 35)"/>
+    </g>
+    <path id="Icon_awesome-broadcast-tower" data-name="Icon awesome-broadcast-tower" class="cls-2" d="M15.7,19.975h3.509a1.639,1.639,0,0,0,1.546-2.2,13.026,13.026,0,0,1,0-8.91,1.639,1.639,0,0,0-1.546-2.2H15.7a1.661,1.661,0,0,0-1.6,1.168,19.612,19.612,0,0,0,0,10.979A1.659,1.659,0,0,0,15.7,19.975ZM9.355,2.428A1.647,1.647,0,0,0,7.9,0H4.227A1.684,1.684,0,0,0,2.693.969,29.719,29.719,0,0,0,0,13.317,28.992,28.992,0,0,0,2.777,25.682a1.675,1.675,0,0,0,1.52.951H7.921A1.648,1.648,0,0,0,9.373,24.2,23.2,23.2,0,0,1,9.355,2.428ZM63.884.966A1.682,1.682,0,0,0,62.352,0H58.667a1.644,1.644,0,0,0-1.459,2.419,23.33,23.33,0,0,1,.029,21.767,1.651,1.651,0,0,0,1.447,2.447H62.35a1.682,1.682,0,0,0,1.532-.966,29.6,29.6,0,0,0,0-24.7Zm-13,5.692H47.371a1.639,1.639,0,0,0-1.546,2.2,13.025,13.025,0,0,1,0,8.91,1.639,1.639,0,0,0,1.546,2.2H50.88a1.659,1.659,0,0,0,1.6-1.169,19.609,19.609,0,0,0,0-10.978A1.658,1.658,0,0,0,50.88,6.658ZM38.78,17.074a6.654,6.654,0,1,0-10.978,0L14.226,49.68a1.665,1.665,0,0,0,.9,2.176l3.07,1.281a1.663,1.663,0,0,0,2.175-.9L25.485,39.95H41.1l5.119,12.292a1.663,1.663,0,0,0,2.175.9l3.07-1.281a1.666,1.666,0,0,0,.9-2.176L38.78,17.074ZM28.258,33.291,33.291,21.2l5.033,12.088H28.258Z" transform="translate(20.848 29.364)"/>
+    <circle id="Ellipse_15" data-name="Ellipse 15" class="cls-2" cx="11.5" cy="11.5" r="11.5" transform="translate(6)"/>
+  </g>
+</svg>
